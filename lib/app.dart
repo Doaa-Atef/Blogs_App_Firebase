@@ -25,6 +25,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
 
         colorScheme: ColorScheme.fromSeed(seedColor:AppColors.primaryColor),
+        useMaterial3: true,
       ),
      debugShowCheckedModeBanner: false,
       onGenerateRoute: RoutesServices.generateRoute,

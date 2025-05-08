@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:firebase_cli/core/caches/prefs_keys.dart';
 import 'package:firebase_cli/core/caches/shared_prefs.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-
 import '../../../../core/styles/app_colors.dart';
 import '../../model/blog_model.dart';
 import '../../view_model/add_blog_cubit.dart';
@@ -21,10 +19,9 @@ class AddBlogForm extends StatefulWidget {
 }
 
 class _AddBlogFormState extends State<AddBlogForm> {
+
   TextEditingController titleController = TextEditingController();
-
   TextEditingController descriptionController = TextEditingController();
-
   TextEditingController dateController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
@@ -40,9 +37,7 @@ class _AddBlogFormState extends State<AddBlogForm> {
       dateController.text = dateFormat;
     }
   }
-
   XFile? image = XFile("");
-
 
   pickImage({required ImageSource source}) async {
     final ImagePicker picker = ImagePicker();
@@ -140,16 +135,24 @@ class _AddBlogFormState extends State<AddBlogForm> {
                   builder: (BuildContext context) {
 
                     return CupertinoAlertDialog(
-                      title: Text("Pick Image"),
+                      title: Text("Change Image"),
                       actions: [
                         CupertinoDialogAction(child: Text("Camera"),
                           onPressed: (){
                             pickImage(source: ImageSource.camera);
+                            setState(() {
+
+                            });
+                            Navigator.pop(context);
                           },
                         ),
                         CupertinoDialogAction(child: Text("Gallery"),
                           onPressed: (){
                             pickImage(source: ImageSource.gallery);
+                            Navigator.pop(context);
+                            setState(() {
+
+                            });
                           },
                         ),
                         CupertinoDialogAction(child: Text("Cancel",
@@ -168,8 +171,7 @@ class _AddBlogFormState extends State<AddBlogForm> {
 
                 );
               },
-              child: Text("Pick Image"),
-
+              child: Text(image == null || image!.path.isEmpty ?"Pick Image": "Change Image"),
             ),
             SizedBox(
               height: 15,
@@ -182,7 +184,7 @@ class _AddBlogFormState extends State<AddBlogForm> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       context.read<AddBlogCubit>().addBlog(
-                          blogModel: BlogModel(
+                          blogModel: AddBlogModel(
                               uid: AppSharedPrefs.getString(
                                   key: SharedPrefsKeys.userId),
                               image: image!.path,

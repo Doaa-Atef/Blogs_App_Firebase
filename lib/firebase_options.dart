@@ -50,19 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAH9SvfM5HnfAJEFKEcnSchdJTLIpP6C4M',
-    appId: '1:107558888001:android:0bc969b922577702581cc0',
-    messagingSenderId: '107558888001',
-    projectId: 'fir-cli-e8989',
-    storageBucket: 'fir-cli-e8989.firebasestorage.app',
+    apiKey: 'AIzaSyD0oidchsz5jCGzG31jf-gdxR76edI_EdM',
+    appId: '1:639142710201:android:8cc9765aa082e3a51f8468',
+    messagingSenderId: '639142710201',
+    projectId: 'bekya-9038f',
+    storageBucket: 'bekya-9038f.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB-Hx3hjrCOv5DoQ7m31P8LYpbt6B7MErY',
-    appId: '1:107558888001:ios:b65fff4e422c8adb581cc0',
-    messagingSenderId: '107558888001',
-    projectId: 'fir-cli-e8989',
-    storageBucket: 'fir-cli-e8989.firebasestorage.app',
+    apiKey: 'AIzaSyAGEEIBGOiMNZVmjnRs6jWl3Z5I1hTk6Nc',
+    appId: '1:639142710201:ios:7de49403406d94701f8468',
+    messagingSenderId: '639142710201',
+    projectId: 'bekya-9038f',
+    storageBucket: 'bekya-9038f.appspot.com',
     iosBundleId: 'com.example.firebaseCli',
   );
+
 }

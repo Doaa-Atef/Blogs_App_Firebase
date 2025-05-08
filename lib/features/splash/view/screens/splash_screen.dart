@@ -68,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     if (userId.isNotEmpty){
       Navigator.pushReplacementNamed(context, Routes.home);
     }else{
-      Navigator.pushReplacementNamed(context, Routes.login);
+       Navigator.pushReplacementNamed(context, Routes.login);
 
     }
   }

@@ -12,7 +12,7 @@ class AddBlogCubit extends Cubit<AddBlogState> {
   AddBlogCubit() : super(AddBlogInitial());
   FirebaseFirestore firebaseFireStore = FirebaseFirestore.instance;
   FirebaseStorage firebaseStorage = FirebaseStorage.instance;
-  addBlog({required BlogModel blogModel, required File image}) async {
+  addBlog({required AddBlogModel blogModel, required File image}) async {
     emit(AddBlogLoading());
     try{
       if(image.path.isNotEmpty){
@@ -25,7 +25,7 @@ class AddBlogCubit extends Cubit<AddBlogState> {
       if (kDebugMode) {
         print("blog added");
       }
-      emit(AddBlogSuccess());
+      emit(AddBlogSuccess(blogModel));
     } on FirebaseException catch (e){
       if (kDebugMode) {
         print(e);

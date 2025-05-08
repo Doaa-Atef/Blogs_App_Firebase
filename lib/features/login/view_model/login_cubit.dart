@@ -20,6 +20,7 @@ class LoginCubit extends Cubit<LoginState> {
           email: email, password: password);
       if(user != null){
         await saveUserDataToLocal(email: email, userId: user.user!.uid);
+
         emit(LoginSuccess());
       }
     } on FirebaseAuthException catch(e){
