@@ -42,6 +42,7 @@ class HomeCubit extends Cubit<HomeState> {
       emit(DeleteBlogSuccess());
     } on FirebaseException catch (e) {
       emit(DeleteBlogFailure(e.toString()));
+
     }
   }
 }

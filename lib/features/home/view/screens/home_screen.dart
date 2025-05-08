@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,14 +30,28 @@ class _HomeScreenState extends State<HomeScreen> {
           final result =
           await Navigator.pushNamed(context, Routes.addBlog);
           context.read<HomeCubit>().getBlogs();
-          print("result => $result");
+          if (kDebugMode) {
+            print("result => $result");
+          }
           if (result is HomeBlogModel) {
-            print(result.id);
-            print(result.uid);
-            print(result.title);
-            print(result.description);
-            print(result.date);
-            print(result.image);
+            if (kDebugMode) {
+              print(result.id);
+            }
+            if (kDebugMode) {
+              print(result.uid);
+            }
+            if (kDebugMode) {
+              print(result.title);
+            }
+            if (kDebugMode) {
+              print(result.description);
+            }
+            if (kDebugMode) {
+              print(result.date);
+            }
+            if (kDebugMode) {
+              print(result.image);
+            }
             setState(() {
               context.read<HomeCubit>().blogsList.add(result);
             });

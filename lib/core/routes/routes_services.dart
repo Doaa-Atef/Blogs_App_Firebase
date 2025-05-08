@@ -9,6 +9,8 @@ import '../../features/add_blog/view/screens/add_blog_screen.dart';
 import '../../features/login/view/screen/login_screen.dart';
 import '../../features/register/view/screens/register_screen.dart';
 import '../../features/splash/view/screens/splash_screen.dart';
+import '../../features/user_data/view/screens/user_data_screen.dart';
+import '../../features/user_data/view_model/user_cubit.dart';
 
 
 class RoutesServices {
@@ -40,6 +42,13 @@ class RoutesServices {
       case Routes.addBlog:
         return MaterialPageRoute(builder: (context) {
           return AddBlogScreen();
+        });
+      case Routes.userData:
+        return MaterialPageRoute(builder: (context) {
+          return BlocProvider(
+            create: (context) => UserCubit()..getUserData(),
+            child: UserDataScreen(),
+          );
         });
       default:
         return MaterialPageRoute(builder: (context) {

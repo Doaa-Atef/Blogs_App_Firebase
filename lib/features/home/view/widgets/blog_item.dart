@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/styles/app_colors.dart';
 import '../../model/home_blog_model.dart';
 
 class BlogItem extends StatelessWidget {
@@ -38,12 +39,28 @@ class BlogItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  IconButton(onPressed: onDelete, icon: Icon(Icons.delete_outline,
-                    color: Colors.red,
-                  )),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.edit,
-
-                  )),
+                  CircleAvatar(
+                    backgroundColor: AppColors.primaryColor,
+                    child: IconButton(
+                      onPressed: onDelete,
+                      icon: Icon(
+                        Icons.delete_outline,
+                        color: Colors.red,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  CircleAvatar(
+                    backgroundColor: AppColors.primaryColor,
+                    child: IconButton(
+                      onPressed: () {
+                      },
+                      icon: Icon(
+                        Icons.edit,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -64,9 +81,8 @@ class BlogItem extends StatelessWidget {
                       ),
                     ),
                     Text(blogModel.date,style: TextStyle(
-
-                    )),
-
+                    ),
+                    ),
                   ],
                 ),
                 Divider(),
@@ -81,10 +97,8 @@ class BlogItem extends StatelessWidget {
               ],
             ),
           ),
-
         ],
       ),
-
     );
   }
 }

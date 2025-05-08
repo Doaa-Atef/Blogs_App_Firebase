@@ -1,6 +1,7 @@
 
 import 'dart:async';
 import 'package:firebase_cli/core/caches/shared_prefs.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/caches/prefs_keys.dart';
 import '../../../../core/routes/routes.dart';
@@ -64,11 +65,13 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   checkLoginStatus() async {
     final String userId = AppSharedPrefs.getString(key: SharedPrefsKeys.userId);
-    print("email === ${SharedPrefsKeys.userId.name}");
+    if (kDebugMode) {
+      print("email === ${SharedPrefsKeys.userId.name}");
+    }
     if (userId.isNotEmpty){
-      Navigator.pushReplacementNamed(context, Routes.home);
+      Navigator.pushNamed(context, Routes.home);
     }else{
-       Navigator.pushReplacementNamed(context, Routes.login);
+       Navigator.pushNamed(context, Routes.login);
 
     }
   }
@@ -82,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    List<String> letters = "Notes APP".split("");
+    List<String> letters = "Notes App".split("");
 
     return Scaffold(
       backgroundColor: AppColors.secondaryColor,

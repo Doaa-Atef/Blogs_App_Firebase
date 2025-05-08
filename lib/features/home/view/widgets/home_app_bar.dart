@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/routes/routes.dart';
 import '../../../../core/styles/app_colors.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
@@ -8,6 +9,7 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       centerTitle: true,
       title: Text("Home",style: TextStyle(
           fontWeight: FontWeight.w700
@@ -15,6 +17,14 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget{
       ),
       backgroundColor: AppColors.primaryColor,
       elevation: 10,
+      actions: [
+        IconButton(
+          icon: Icon(Icons.person),
+          onPressed: () {
+            Navigator.pushNamed(context, Routes.userData);
+          },
+        ),
+      ],
     );
   }
 

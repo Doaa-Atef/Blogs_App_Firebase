@@ -1,3 +1,4 @@
+import 'package:firebase_cli/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +17,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   final usernameController = TextEditingController();
   final emailController = TextEditingController();
-  // final phoneController = TextEditingController();
   final passwordController = TextEditingController();
 
   bool _obscurePassword = true;
@@ -27,13 +27,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       create: (context) => RegisterCubit(),
       child: Scaffold(
         appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: Colors.green,
+          iconTheme: IconThemeData(color: AppColors.primaryColor),
+        backgroundColor: AppColors.primaryColor,
         centerTitle: true,
         title: Text("Register",style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
-            color: Colors.white
+            color: Colors.black
         ),
 
         ),
@@ -43,7 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             if (state is RegisterSuccessState) {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text("Account created successfully"),
-                  backgroundColor: Colors.green));
+                  backgroundColor: AppColors.primaryColor));
               Navigator.pop(context);
             } else if (state is RegisterErrorState) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -93,25 +93,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     SizedBox(height: 20,),
-                    // TextFormField(
-                    //   maxLength: 11,
-                    //   controller: phoneController,
-                    //     validator: (v) {
-                    //       if (v!.isEmpty) {
-                    //         return "Please enter phone number";
-                    //       }else if (v.length !=11){
-                    //         return "phone number must be 11 numbers";
-                    //       }
-                    //       return null;
-                    //     },
-                    //   decoration: InputDecoration(
-                    //     hintText: "Phone",
-                    //     border: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.circular(10),
-                    //     ),
-                    //   ),
-                    // ),
-                    SizedBox(height: 8),
                     TextFormField(
                       // validator: (v) {
                       //   if (v!.isEmpty) {
@@ -165,10 +146,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                 ),
-                                backgroundColor: WidgetStatePropertyAll(Colors.green),
+                                backgroundColor: WidgetStatePropertyAll(AppColors.primaryColor),
                               ),
 
-                              child: Text("Register",style: TextStyle(color: Colors.white),),
+                              child: Text("Register",style: TextStyle(color: Colors.black),),
                                                        ),
                            );
 
@@ -181,7 +162,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Text("Already have an account?"),
                         TextButton(onPressed: (){
                           Navigator.pushNamed(context, Routes.login);
-                        }, child: Text("Login",style: TextStyle(color: Colors.green)),
+                        }, child: Text("Login",style: TextStyle(color: AppColors.secondaryColor)),
                         )],
                     )
                   ],

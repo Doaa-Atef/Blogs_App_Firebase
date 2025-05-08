@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_cli/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/routes/routes.dart';
@@ -15,8 +16,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _obscurePassword = true;
 
-  // FirebaseAuth auth = FirebaseAuth.instance;
-
   @override
   Widget build(BuildContext context) {
     return  BlocProvider(
@@ -31,12 +30,12 @@ class _LoginScreenState extends State<LoginScreen> {
   },
   child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: AppColors.primaryColor,
           centerTitle: true,
           title: Text("Login",style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
-          color: Colors.white
+          color: Colors.black
           ),
 
           ),
@@ -108,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     alignment: Alignment.centerRight,
                     child: TextButton(onPressed: () {},
                       child: Text("Forget Password?", style:
-                      TextStyle(color: Colors.green),
+                      TextStyle(color: AppColors.secondaryColor),
                       ),
                     ),
                   ),
@@ -129,11 +128,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             shape: WidgetStatePropertyAll(RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15))),
-                            backgroundColor: MaterialStatePropertyAll(Colors.green),
+                            backgroundColor: MaterialStatePropertyAll(AppColors.primaryColor),
                           ),
                           child: Text(
                             "Login",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       );
@@ -152,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           child: Text(
                             "Register",
-                            style: TextStyle(color: Colors.green),
+                            style: TextStyle(color: AppColors.secondaryColor),
                           )
                       )
                     ],

@@ -28,15 +28,17 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-  Future getUserDataFromFireStore({required String username})async{
-    print("saveUserDataToFireStore => ${auth.currentUser!.uid}");
+  Future<Map<String, dynamic>?> getUserDataFromFireStore() async {
     try {
-      await  firebaseFirestore.collection("users").doc(auth.currentUser!.uid).get();
-    } on FirebaseException catch(e){
+      final doc = await firebaseFirestore.collection("users").doc(auth.currentUser!.uid).get();
+      return doc.data();
+    } on FirebaseException catch (e) {
       print("error from firestore => ${e.message}");
-      emit(LoginError(e.toString()));
+      emit(LoginError(e.message ?? "Unknown error"));
+      return null;
     }
   }
+
 
 
   saveUserDataToLocal({required String email, required String userId}) async {
